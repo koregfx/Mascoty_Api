@@ -17,10 +17,30 @@ app.get('/', (req, res) => {
                     err
                 })
             }
-
             res.json({
                 ok: true,
                 users
+            })
+        })
+});
+
+
+app.get('/:id', (req, res) => {
+
+    let id = req.params.id;
+
+
+    User.findById(id)
+        .exec((err, user) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                })
+            }
+            res.json({
+                ok: true,
+                user
             })
         })
 });
@@ -37,7 +57,6 @@ app.post('/', (req, res) => {
 
     user.save((error, userDB) => {
         if (error) {
-            console.log(error);
             return res.status(400).json({
                 ok: false,
                 msg: 'error de guardado',
@@ -49,6 +68,27 @@ app.post('/', (req, res) => {
             userDB
         })
     });
+});
+
+
+app.delete('/:id', (req, res) => {
+
+    let id = req.params.id;
+
+
+    User.findByIdAndUpdate(id)
+        .exec((err, user) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                })
+            }
+            res.json({
+                ok: true,
+                user
+            })
+        })
 });
 
 module.exports = app;
