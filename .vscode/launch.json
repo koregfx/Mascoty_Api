@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "name": "http://app.get('/', (req, res) => {    User.find()        .exec((err, users) => {            if (err) {                return res.status(400).json({                    ok: false,                    err                })            }            res.json({                ok: true,                users            })        })});",
+            "request": "launch",
+            "url": "http://app.get('/', (req, res) => {    User.find()        .exec((err, users) => {            if (err) {                return res.status(400).json({                    ok: false,                    err                })            }            res.json({                ok: true,                users            })        })});"
+        }
+    ]
+}
